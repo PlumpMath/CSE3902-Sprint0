@@ -9,6 +9,7 @@ namespace CSE3902_Sprint0
     interface IController
     {
         Game1 Game { get; set; }
+        ISprite MarioSprite { get; set; }
         void Update();
     }
 }
