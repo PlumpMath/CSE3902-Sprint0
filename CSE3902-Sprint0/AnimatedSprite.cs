@@ -12,10 +12,7 @@ namespace CSE3902_Sprint0
     {
         public int Columns { get; set; }
         public int Rows { get; set; }
-        public Texture2D Texture
-        {
-            get; set;
-        }
+        public Texture2D Texture { get; set; }
 
         public void Draw(SpriteBatch spritebatch, Vector2 location)
         {
