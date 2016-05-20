@@ -14,14 +14,41 @@ namespace CSE3902_Sprint0
         public int Rows { get; set; }
         public Texture2D Texture { get; set; }
 
-        public void Draw(SpriteBatch spritebatch, Vector2 location)
+        private int currentFrame = 0;
+        private int totalFrames;
+
+        public AnimatedSprite(Texture2D texture, int rows, int columns)
         {
-            throw new NotImplementedException();
+            Texture = texture;
+            Rows = rows;
+            Columns = columns;
+            totalFrames = Rows * Columns;
+        }
+
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            int width = Texture.Width / Columns;
+            int height = Texture.Height / Rows;
+            int row = (int)((float)currentFrame / (float)Columns);
+            int column = currentFrame % Columns;
+
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            currentFrame++;
+
+            if(currentFrame == totalFrames)
+            {
+                currentFrame = 0;
+            }
         }
     }
 }
