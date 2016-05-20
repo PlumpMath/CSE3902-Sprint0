@@ -11,6 +11,7 @@ namespace CSE3902_Sprint0
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private AnimatedSprite animatedSprite;
 
         public Game1()
         {
@@ -39,6 +40,8 @@ namespace CSE3902_Sprint0
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Texture2D texture = Content.Load<Texture2D>("mario");
+            animatedSprite = new AnimatedSprite(texture, 4, 4);
 
             // TODO: use this.Content to load your game content here
         }
@@ -64,6 +67,8 @@ namespace CSE3902_Sprint0
 
             // TODO: Add your update logic here
 
+            animatedSprite.Update();
+
             base.Update(gameTime);
         }
 
@@ -76,6 +81,7 @@ namespace CSE3902_Sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            animatedSprite.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }
