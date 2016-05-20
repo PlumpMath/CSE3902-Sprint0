@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace CSE3902_Sprint0
 {
-    class GamepadController
+    class GamepadController : IController
     {
+        public Game1 Game { get; set; }
+
         public GamepadController(Game1 game)
         {
 
+        }
+
+        public void Update()
+        {
         }
     }
 }
