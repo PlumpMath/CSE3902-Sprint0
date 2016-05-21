@@ -12,8 +12,8 @@ namespace CSE3902_Sprint0
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private AnimatedSprite animatedSprite;
         private ArrayList controllerList;
+        private ISprite marioSprite;
 
         public Game1()
         {
@@ -29,7 +29,6 @@ namespace CSE3902_Sprint0
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             controllerList = new ArrayList();
             controllerList.Add(new KeyboardController(this));
 
@@ -45,7 +44,7 @@ namespace CSE3902_Sprint0
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D texture = Content.Load<Texture2D>("mario");
-            animatedSprite = new AnimatedSprite(texture, 4, 4);
+            marioSprite = new AnimatedSprite(texture, 4, 4);
 
             // TODO: use this.Content to load your game content here
         }
@@ -66,12 +65,13 @@ namespace CSE3902_Sprint0
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            marioSprite.Update();
+
             foreach(IController controller in controllerList)
             {
                 controller.Update();
             }
 
-            animatedSprite.Update();
 
             base.Update(gameTime);
         }
@@ -85,7 +85,7 @@ namespace CSE3902_Sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            animatedSprite.Draw(spriteBatch, new Vector2(400, 200));
+            marioSprite.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }
