@@ -9,11 +9,10 @@ namespace CSE3902_Sprint0
 {
     class KeyboardController : IController
     {
-
         public Game1 Game { get; set; }
         public ISprite MarioSprite { get; set; }
 
-        public KeyboardController(Game1 game )
+        public KeyboardController(Game1 game)
         {
             Game = game;
         }
