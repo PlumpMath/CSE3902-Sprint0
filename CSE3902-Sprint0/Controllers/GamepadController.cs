@@ -37,11 +37,12 @@ namespace CSE3902_Sprint0
             else if(gamePadState.IsButtonDown(Buttons.X))
             {
                 // vertical, static
+                Game.marioMoves = Game1.MarioMovement.Up;
             }
             else if(gamePadState.IsButtonDown(Buttons.Y))
             {
                 // horizontal, animated
-                Game.marioMoves = Game1.MarioMovement.Up;
+                Game.marioMoves = Game1.MarioMovement.Right;
             }
         }
     }

@@ -41,6 +41,7 @@ namespace CSE3902_Sprint0
             else if(keyboardState.IsKeyDown(Keys.T))
             {
                 // horizontal, animated
+                Game.marioMoves = Game1.MarioMovement.Right;
             }
         }
     }
