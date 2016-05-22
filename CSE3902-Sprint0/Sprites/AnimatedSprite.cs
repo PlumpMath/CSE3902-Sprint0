@@ -26,7 +26,7 @@ namespace CSE3902_Sprint0
         }
 
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 destination)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -34,7 +34,7 @@ namespace CSE3902_Sprint0
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)destination.X, (int)destination.Y, width, height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
