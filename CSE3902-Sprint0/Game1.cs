@@ -92,9 +92,16 @@ namespace CSE3902_Sprint0
                     marioPos.Y--;
                 }
             }
-            else if(marioMoves == MarioMovement.Nowhere)
+            else if(marioMoves == MarioMovement.Right)
             {
-
+                if(marioPos.X == GraphicsDevice.Viewport.Width)
+                {
+                    marioPos.X = 0;
+                }
+                else
+                {
+                    marioPos.X++;
+                }
             }
 
 
