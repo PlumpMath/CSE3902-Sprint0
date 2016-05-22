@@ -19,8 +19,8 @@ namespace CSE3902_Sprint0
         public const int MARIO_SPRITE_WIDTH = 85; // units: pixels
         public const int MARIO_SPRITE_HEIGHT = 108; 
         public enum MarioMovement { Up, Down, Left, Right, Nowhere };
-
         public MarioMovement marioMoves = MarioMovement.Nowhere;
+        private Vector2 marioPos;
 
         public Game1()
         {
@@ -40,6 +40,8 @@ namespace CSE3902_Sprint0
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamepadController(this));
 
+            marioPos = new Vector2(400, 200);
+
             base.Initialize();
         }
 
@@ -54,8 +56,6 @@ namespace CSE3902_Sprint0
             Texture2D texture = Content.Load<Texture2D>("mario");
            // marioSprite = new AnimatedSprite(texture, 4, 4);
             MarioSprite = new StaticSprite(texture, new Rectangle(0, 0, MARIO_SPRITE_WIDTH, MARIO_SPRITE_HEIGHT));
-
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -81,6 +81,22 @@ namespace CSE3902_Sprint0
                 controller.Update();
             }
 
+            if(marioMoves == MarioMovement.Up)
+            {
+                if(marioPos.Y == 0)
+                {
+                    marioPos.Y = GraphicsDevice.Viewport.Height;
+                }
+                else
+                {
+                    marioPos.Y--;
+                }
+            }
+            else if(marioMoves == MarioMovement.Nowhere)
+            {
+
+            }
+
 
             base.Update(gameTime);
         }
@@ -93,8 +109,7 @@ namespace CSE3902_Sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            MarioSprite.Draw(spriteBatch, new Vector2(400, 200));
+            MarioSprite.Draw(spriteBatch, marioPos);
 
             base.Draw(gameTime);
         }
