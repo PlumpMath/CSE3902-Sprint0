@@ -10,7 +10,6 @@ namespace CSE3902_Sprint0
     class KeyboardController : IController
     {
         public Game1 Game { get; set; }
-        public ISprite MarioSprite { get; set; }
 
         public KeyboardController(Game1 game)
         {
@@ -19,8 +18,27 @@ namespace CSE3902_Sprint0
 
         public void Update()
         {
-            if(Keyboard.GetState().IsKeyDown(Keys.Q)) {
+
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if(keyboardState.IsKeyDown(Keys.Q)) {
                 Game.Exit();
+            }
+            else if(keyboardState.IsKeyDown(Keys.W))
+            {
+                // fixed, static
+            }
+            else if(keyboardState.IsKeyDown(Keys.E))
+            {
+                // fixed, animated
+            }
+            else if(keyboardState.IsKeyDown(Keys.R))
+            {
+                // vertical, static
+            }
+            else if(keyboardState.IsKeyDown(Keys.T))
+            {
+                // horizontal, animated
             }
         }
     }
