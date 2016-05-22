@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CSE3902_Sprint0
 {
-    interface ISprite
+    public interface ISprite
     {
         Texture2D Texture { get; set; }
         int Rows { get; set; }
