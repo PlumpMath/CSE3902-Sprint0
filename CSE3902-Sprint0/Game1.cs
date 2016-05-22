@@ -12,8 +12,15 @@ namespace CSE3902_Sprint0
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         private ArrayList controllerList;
-        private ISprite marioSprite;
+
+        public ISprite MarioSprite { get; set; }
+        public const int MARIO_SPRITE_WIDTH = 85; // units: pixels
+        public const int MARIO_SPRITE_HEIGHT = 108; 
+        public enum MarioMovement { Up, Down, Left, Right, Nowhere };
+
+        public MarioMovement marioMoves = MarioMovement.Nowhere;
 
         public Game1()
         {
@@ -31,6 +38,7 @@ namespace CSE3902_Sprint0
         {
             controllerList = new ArrayList();
             controllerList.Add(new KeyboardController(this));
+            controllerList.Add(new GamepadController(this));
 
             base.Initialize();
         }
@@ -44,7 +52,8 @@ namespace CSE3902_Sprint0
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D texture = Content.Load<Texture2D>("mario");
-            marioSprite = new AnimatedSprite(texture, 4, 4);
+           // marioSprite = new AnimatedSprite(texture, 4, 4);
+            MarioSprite = new StaticSprite(texture, new Rectangle(0, 0, MARIO_SPRITE_WIDTH, MARIO_SPRITE_HEIGHT));
 
             // TODO: use this.Content to load your game content here
         }
@@ -65,7 +74,7 @@ namespace CSE3902_Sprint0
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            marioSprite.Update();
+            MarioSprite.Update();
 
             foreach(IController controller in controllerList)
             {
@@ -85,7 +94,7 @@ namespace CSE3902_Sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            marioSprite.Draw(spriteBatch, new Vector2(400, 200));
+            MarioSprite.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }
