@@ -27,6 +27,7 @@ namespace CSE3902_Sprint0
             else if(keyboardState.IsKeyDown(Keys.W))
             {
                 // fixed, static
+                Game.marioMoves = Game1.MarioMovement.Nowhere;
             }
             else if(keyboardState.IsKeyDown(Keys.E))
             {
@@ -35,6 +36,7 @@ namespace CSE3902_Sprint0
             else if(keyboardState.IsKeyDown(Keys.R))
             {
                 // vertical, static
+                Game.marioMoves = Game1.MarioMovement.Up;
             }
             else if(keyboardState.IsKeyDown(Keys.T))
             {
