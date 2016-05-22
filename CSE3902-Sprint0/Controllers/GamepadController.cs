@@ -28,6 +28,7 @@ namespace CSE3902_Sprint0
             else if(gamePadState.IsButtonDown(Buttons.A))
             {
                 // fixed, static
+                Game.marioMoves = Game1.MarioMovement.Nowhere;
             }
             else if(gamePadState.IsButtonDown(Buttons.B))
             {
@@ -40,6 +41,7 @@ namespace CSE3902_Sprint0
             else if(gamePadState.IsButtonDown(Buttons.Y))
             {
                 // horizontal, animated
+                Game.marioMoves = Game1.MarioMovement.Up;
             }
         }
     }

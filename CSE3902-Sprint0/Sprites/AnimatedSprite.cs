@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CSE3902_Sprint0
 {
+    // taken from : http://rbwhitaker.wikidot.com/monogame-texture-atlases-2
     class AnimatedSprite : ISprite
     {
         public int Columns { get; set; }
@@ -24,7 +25,6 @@ namespace CSE3902_Sprint0
             Columns = columns;
             totalFrames = Rows * Columns;
         }
-
 
         public void Draw(SpriteBatch spriteBatch, Vector2 destination)
         {
