@@ -15,6 +15,6 @@ namespace CSE3902_Sprint0
         int Rows { get; set; }
         int Columns { get; set; }
         void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
+        void Draw(SpriteBatch spriteBatch, Vector2 destination);
     }
 }
